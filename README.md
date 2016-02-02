@@ -1,4 +1,4 @@
-# Laravel Geography
+# Laravel Measurements
 A Laravel starter pack for anything related to measurement: Distance, taxes, etc.
 
 ### License
