@@ -1,0 +1,59 @@
+postage\Models\TaxType:
+  type:               entity
+  table:              TaxType
+  repositoryClass:    postage\Repositories\TaxTypeRepository
+
+  id:
+    id:
+      column:         id
+      type:           integer
+      nullable:       false
+      options:
+        unsigned:     true
+        comment:      'TaxType id'
+      id:             true
+      generator:
+        strategy:     IDENTITY
+
+  fields:
+    name:
+      column:         name
+      type:           string
+      unique:         true
+      nullable:       false
+      length:         50
+      options:
+        comment:      "Name of the TaxType"
+    symbol:
+      column:         symbol
+      type:           string
+      unique:         true
+      nullable:       false
+      length:         50
+      options:
+        comment:      "symbol of the TaxType"
+##  BEGIN BOILER PLATE
+    statusId:
+      column:         statusId
+      type:           integer
+      nullable:       false
+      options:
+        unsigned:     true
+        comment:      "Status of the TaxType"
+        default:      1
+    createdAt:
+      column:         createdAt
+      type:           datetime
+      nullable:       false
+      options:
+        comment:      "When the TaxType was created"
+        default:      CURRENT_datetime
+    expiresAt:
+      column:         expiresAt
+      type:           datetime
+      nullable:       false
+      options:
+        comment:      "When the TaxType expires"
+        default:      "2038-01-01 01:01:01"
+
+  lifecycleCallbacks: {  }

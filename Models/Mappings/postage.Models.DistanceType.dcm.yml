@@ -1,0 +1,64 @@
+postage\Models\DistanceType:
+  type:               entity
+  table:              DistanceType
+  repositoryClass:    postage\Repositories\DistanceTypeRepository
+
+  oneToMany:
+    conversions:
+      targetEntity:   DistanceConversion
+      mappedBy:       distancetype
+      cascade:        ["persist", "remove"]
+
+  id:
+    id:
+      column:         id
+      type:           integer
+      nullable:       false
+      options:
+        unsigned:     true
+        comment:      'DistanceType id'
+      id:             true
+      generator:
+        strategy:     IDENTITY
+
+  fields:
+    name:
+      column:         name
+      type:           string
+      nullable:       false
+      length:         100
+      options:
+        comment:      "DistanceType unique name"
+    symbol:
+      column:         symbol
+      type:           string
+      nullable:       false
+      length:         2
+      options:
+        fixed:        false
+        comment:      "DistanceType unique symbol"
+##  BEGIN BOILER PLATE
+    statusId:
+      column:         statusId
+      type:           integer
+      nullable:       false
+      options:
+        unsigned:     true
+        comment:      "Status of the DistanceType"
+        default:      1
+    createdAt:
+      column:         createdAt
+      type:           datetime
+      nullable:       false
+      options:
+        comment:      "When the DistanceType was created"
+        default:      CURRENT_datetime
+    expiresAt:
+      column:         expiresAt
+      type:           datetime
+      nullable:       false
+      options:
+        comment:      "When the DistanceType expires"
+        default:      "2038-01-01 01:01:01"
+
+  lifecycleCallbacks: {  }

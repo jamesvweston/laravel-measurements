@@ -1,0 +1,68 @@
+postage\Models\WeightConversion:
+  type:               entity
+  table:              WeightConversion
+  repositoryClass:    postage\Repositories\WeightConversionRepository
+
+  manyToOne:
+    fromWeightType:
+      targetEntity:   WeightType
+      nullable:       false
+      fetch:          EAGER
+      joinColumn:
+        name:         fromWeightTypeId
+        referencedColumnName: id
+    toWeightType:
+      targetEntity:   WeightType
+      nullable:       false
+      fetch:          EAGER
+      joinColumn:
+        name:         toWeightTypeId
+        referencedColumnName: id
+
+  id:
+    id:
+      column:         id
+      type:           integer
+      nullable:       false
+      options:
+        unsigned:     true
+        comment:      'WeightConversion id'
+      id:             true
+      generator:
+        strategy:     IDENTITY
+
+  fields:
+    multiplicand:
+      column:         multiplicand
+      type:           decimal
+      nullable:       false
+      precision:      14
+      scale:          8
+      options:
+        fixed:        false
+        comment:      "multiplicand of the WeightConversion"
+##  BEGIN BOILER PLATE
+    statusId:
+      column:         statusId
+      type:           integer
+      nullable:       false
+      options:
+        unsigned:     true
+        comment:      "Status of the WeightConversion"
+        default:      1
+    createdAt:
+      column:         createdAt
+      type:           datetime
+      nullable:       false
+      options:
+        comment:      "When the WeightConversion was created"
+        default:      CURRENT_datetime
+    expiresAt:
+      column:         expiresAt
+      type:           datetime
+      nullable:       false
+      options:
+        comment:      "When the WeightConversion expires"
+        default:      "2038-01-01 01:01:01"
+
+  lifecycleCallbacks: {  }

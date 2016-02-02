@@ -1,0 +1,67 @@
+postage\Models\DistanceConversion:
+  type:               entity
+  table:              DistanceConversion
+  repositoryClass:    postage\Repositories\DistanceConversionRepository
+
+  manyToOne:
+    fromDistanceType:
+      targetEntity:   DistanceType
+      fetch:          LAZY
+      inversedBy:     conversions
+      joinColumn:
+        name:         fromDistanceTypeId
+        referencedColumnName: id
+    toDistanceType:
+      targetEntity:   DistanceType
+      fetch:          LAZY
+      joinColumn:
+        name:         toDistanceTypeId
+        referencedColumnName: id
+
+  id:
+    id:
+      column:         id
+      type:           integer
+      nullable:       false
+      options:
+        unsigned:     true
+        comment:      'DistanceConversion id'
+      id:             true
+      generator:
+        strategy:     IDENTITY
+
+  fields:
+    multiplicand:
+      column:         multiplicand
+      type:           decimal
+      nullable:       false
+      precision:      14
+      scale:          8
+      options:
+        fixed:        false
+        comment:      "multiplicand of the DistanceConversion"
+##  BEGIN BOILER PLATE
+    statusId:
+      column:         statusId
+      type:           integer
+      nullable:       false
+      options:
+        unsigned:     true
+        comment:      "Status of the DistanceConversion"
+        default:      1
+    createdAt:
+      column:         createdAt
+      type:           datetime
+      nullable:       false
+      options:
+        comment:      "When the DistanceConversion was created"
+        default:      CURRENT_datetime
+    expiresAt:
+      column:         expiresAt
+      type:           datetime
+      nullable:       false
+      options:
+        comment:      "When the DistanceConversion expires"
+        default:      "2038-01-01 01:01:01"
+
+  lifecycleCallbacks: {  }
