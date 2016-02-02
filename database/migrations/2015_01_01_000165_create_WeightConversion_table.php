@@ -4,15 +4,14 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostalDistrictTable extends Migration {
+class CreateWeightConversionTable extends Migration {
 
     public function up () {
-        Schema::create('PostalDistrict', function (Blueprint $table) {
+        Schema::create('WeightConversion', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer('countryId')->unsigned()->index();
-            $table->string('name', 100)->unique();
-            $table->string('french', 100)->unique();
-            $table->string('symbol', 100)->unique();
+            $table->integer('fromWeightTypeId')->unsigned()->index();
+            $table->integer('toWeightTypeId')->unsigned()->index();
+            $table->decimal('multiplicand', 14, 8)->index();
 
 
             // Boilerplate
@@ -21,10 +20,13 @@ class CreatePostalDistrictTable extends Migration {
             $table->datetime('expiresAt')->default('2038-01-01 01:01:01')->index();
         });
 
+        DB::statement("ALTER TABLE WeightConversion ADD CONSTRAINT unique_fromWeightTypeId_toWeightTypeId
+                          UNIQUE (fromWeightTypeId, toWeightTypeId)");
+
     }
 
     public function down () {
-        Schema::drop('PostalDistrict');
+        Schema::drop('WeightConversion');
     }
 
 }

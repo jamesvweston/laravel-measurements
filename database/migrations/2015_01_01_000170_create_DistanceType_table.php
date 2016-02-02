@@ -4,13 +4,13 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubdivisionAltNameTable extends Migration {
+class CreateDistanceTypeTable extends Migration {
 
     public function up () {
-        Schema::create('SubdivisionAltName', function (Blueprint $table) {
+        Schema::create('DistanceType', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer('subdivisionId')->unsigned()->index();
-            $table->string('name', 100)->index();
+            $table->string('name', 100)->unique();
+            $table->string('symbol', 2)->unique();
 
 
             // Boilerplate
@@ -18,10 +18,11 @@ class CreateSubdivisionAltNameTable extends Migration {
             $table->datetime('createdAt')->default(DB::raw('CURRENT_TIMESTAMP'))->index();
             $table->datetime('expiresAt')->default('2038-01-01 01:01:01')->index();
         });
+
     }
 
     public function down () {
-        Schema::drop('SubdivisionAltName');
+        Schema::drop('DistanceType');
     }
 
 }
