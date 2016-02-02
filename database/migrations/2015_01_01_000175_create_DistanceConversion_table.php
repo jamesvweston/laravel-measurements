@@ -23,6 +23,11 @@ class CreateDistanceConversionTable extends Migration {
         DB::statement("ALTER TABLE DistanceConversion ADD CONSTRAINT unique_fromDistanceTypeId_toDistanceTypeId
                           UNIQUE (fromDistanceTypeId, toDistanceTypeId)");
 
+        Schema::table('DistanceConversion', function (Blueprint $table) {
+            $table->foreign('fromDistanceTypeId')->references('id')->on('DistanceType');
+            $table->foreign('toDistanceTypeId')->references('id')->on('DistanceType');
+        });
+
     }
 
     public function down () {

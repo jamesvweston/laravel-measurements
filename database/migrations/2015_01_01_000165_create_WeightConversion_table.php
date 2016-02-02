@@ -23,6 +23,11 @@ class CreateWeightConversionTable extends Migration {
         DB::statement("ALTER TABLE WeightConversion ADD CONSTRAINT unique_fromWeightTypeId_toWeightTypeId
                           UNIQUE (fromWeightTypeId, toWeightTypeId)");
 
+        Schema::table('WeightConversion', function (Blueprint $table) {
+            $table->foreign('fromWeightTypeId')->references('id')->on('WeightType');
+            $table->foreign('toWeightTypeId')->references('id')->on('WeightType');
+        });
+
     }
 
     public function down () {
