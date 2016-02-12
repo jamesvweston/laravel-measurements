@@ -1,10 +1,12 @@
-<?php namespace postage\Repositories;
+<?php
+namespace app\Repositories;
 
-use postage\Utilities\ArrayUtil;
-use postage\Utilities\StringUtil;
-use postage\Exceptions\ValidationFailureException;
+
+use app\Utilities\ArrayUtil;
+use app\Utilities\StringUtil;
+use app\Exceptions\ValidationFailureException;
 use LaravelDoctrine\ORM\Pagination\Paginatable;
-use postage\Helpers\InputValidator;
+use app\Helpers\InputValidator;
 
 class CurrencyRepository extends BaseRepository {
 
@@ -30,7 +32,7 @@ class CurrencyRepository extends BaseRepository {
             $qb->select(['currency']);
         }
 
-        $qb->from('postage\Models\Currency', 'currency');
+        $qb->from('app\Models\Currency', 'currency');
 
         $qb->orderBy($query['orderBy']['field'], $query['orderBy']['order']);
 

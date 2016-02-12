@@ -1,6 +1,8 @@
-<?php namespace postage\Models;
+<?php
+namespace app\Models;
 
-use postage\Utilities\ArrayUtil;
+
+use app\Utilities\ArrayUtil;
 use Respect\Validation\Validator as v;
 use Auth;
 
@@ -34,14 +36,14 @@ class TaxType extends BaseModel implements \JsonSerializable {
     }
 
     protected function getValidationRules() {
-        v::with('postage\\Models\\Validation\\');
+        v::with('app\\Models\\Validation\\');
 
         return [
-            v::attribute('provider',                    v::oneOf(v::instance('postage\\Models\\Provider'))),
-            v::attribute('carrier',                     v::oneOf(v::instance('postage\\Models\\Carrier'))),
+            v::attribute('provider',                    v::oneOf(v::instance('app\\Models\\Provider'))),
+            v::attribute('carrier',                     v::oneOf(v::instance('app\\Models\\Carrier'))),
             v::attribute('name',                        v::notEmpty()->length(3, 100)->alpha()->UniqueProviderName()),
             v::attribute('symbol',                      v::notEmpty()->length(3, 100)->UniqueProviderSymbol()),
-            v::attribute('routeTransaction',            v::instance('postage\\Models\\RouteTransaction')),
+            v::attribute('routeTransaction',            v::instance('app\\Models\\RouteTransaction')),
             v::attribute('statusId',                    v::notEmpty()->int()->positive()),
             v::attribute('createdAt',                   v::notEmpty()->date()),
             v::attribute('expiresAt',                   v::notEmpty()->date()),

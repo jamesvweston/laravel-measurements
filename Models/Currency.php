@@ -1,4 +1,6 @@
-<?php namespace postage\Models;
+<?php
+namespace app\Models;
+
 
 use Respect\Validation\Validator as v;
 

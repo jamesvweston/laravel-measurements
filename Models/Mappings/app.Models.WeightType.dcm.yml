@@ -1,7 +1,7 @@
-postage\Models\TaxType:
+app\Models\WeightType:
   type:               entity
-  table:              TaxType
-  repositoryClass:    postage\Repositories\TaxTypeRepository
+  table:              WeightType
+  repositoryClass:    app\Repositories\WeightTypeRepository
 
   id:
     id:
@@ -10,7 +10,7 @@ postage\Models\TaxType:
       nullable:       false
       options:
         unsigned:     true
-        comment:      'TaxType id'
+        comment:      'WeightType id'
       id:             true
       generator:
         strategy:     IDENTITY
@@ -21,17 +21,18 @@ postage\Models\TaxType:
       type:           string
       unique:         true
       nullable:       false
-      length:         50
+      length:         100
       options:
-        comment:      "Name of the TaxType"
+        comment:      "WeightType unique name"
     symbol:
       column:         symbol
       type:           string
       unique:         true
       nullable:       false
-      length:         50
+      length:         2
       options:
-        comment:      "symbol of the TaxType"
+        fixed:        false
+        comment:      "WeightType unique symbol"
 ##  BEGIN BOILER PLATE
     statusId:
       column:         statusId
@@ -39,21 +40,21 @@ postage\Models\TaxType:
       nullable:       false
       options:
         unsigned:     true
-        comment:      "Status of the TaxType"
+        comment:      "Status of the WeightType"
         default:      1
     createdAt:
       column:         createdAt
       type:           datetime
       nullable:       false
       options:
-        comment:      "When the TaxType was created"
+        comment:      "When the WeightType was created"
         default:      CURRENT_datetime
     expiresAt:
       column:         expiresAt
       type:           datetime
       nullable:       false
       options:
-        comment:      "When the TaxType expires"
+        comment:      "When the WeightType expires"
         default:      "2038-01-01 01:01:01"
 
   lifecycleCallbacks: {  }

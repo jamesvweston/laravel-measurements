@@ -1,9 +1,11 @@
-<?php namespace postage\Repositories;
+<?php
+namespace app\Repositories;
 
-use postage\Utilities\ArrayUtil;
-use postage\Exceptions\ValidationFailureException;
+
+use app\Utilities\ArrayUtil;
+use app\Exceptions\ValidationFailureException;
 use LaravelDoctrine\ORM\Pagination\Paginatable;
-use postage\Helpers\InputValidator;
+use app\Helpers\InputValidator;
 
 class DistanceTypeRepository extends BaseRepository {
 
@@ -24,7 +26,7 @@ class DistanceTypeRepository extends BaseRepository {
             $qb->select(['distanceType']);
         }
 
-        $qb->from('postage\Models\DistanceType', 'distanceType');
+        $qb->from('app\Models\DistanceType', 'distanceType');
 
         $qb->orderBy($query['orderBy']['field'], $query['orderBy']['order']);
 

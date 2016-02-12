@@ -1,7 +1,13 @@
-postage\Models\WeightType:
+app\Models\DistanceType:
   type:               entity
-  table:              WeightType
-  repositoryClass:    postage\Repositories\WeightTypeRepository
+  table:              DistanceType
+  repositoryClass:    app\Repositories\DistanceTypeRepository
+
+  oneToMany:
+    conversions:
+      targetEntity:   DistanceConversion
+      mappedBy:       distancetype
+      cascade:        ["persist", "remove"]
 
   id:
     id:
@@ -10,7 +16,7 @@ postage\Models\WeightType:
       nullable:       false
       options:
         unsigned:     true
-        comment:      'WeightType id'
+        comment:      'DistanceType id'
       id:             true
       generator:
         strategy:     IDENTITY
@@ -19,20 +25,18 @@ postage\Models\WeightType:
     name:
       column:         name
       type:           string
-      unique:         true
       nullable:       false
       length:         100
       options:
-        comment:      "WeightType unique name"
+        comment:      "DistanceType unique name"
     symbol:
       column:         symbol
       type:           string
-      unique:         true
       nullable:       false
       length:         2
       options:
         fixed:        false
-        comment:      "WeightType unique symbol"
+        comment:      "DistanceType unique symbol"
 ##  BEGIN BOILER PLATE
     statusId:
       column:         statusId
@@ -40,21 +44,21 @@ postage\Models\WeightType:
       nullable:       false
       options:
         unsigned:     true
-        comment:      "Status of the WeightType"
+        comment:      "Status of the DistanceType"
         default:      1
     createdAt:
       column:         createdAt
       type:           datetime
       nullable:       false
       options:
-        comment:      "When the WeightType was created"
+        comment:      "When the DistanceType was created"
         default:      CURRENT_datetime
     expiresAt:
       column:         expiresAt
       type:           datetime
       nullable:       false
       options:
-        comment:      "When the WeightType expires"
+        comment:      "When the DistanceType expires"
         default:      "2038-01-01 01:01:01"
 
   lifecycleCallbacks: {  }

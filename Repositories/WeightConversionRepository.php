@@ -1,6 +1,8 @@
-<?php namespace postage\Repositories;
+<?php
+namespace app\Repositories;
 
-use postage\Models\WeightType;
+
+use app\Models\WeightType;
 
 class WeightConversionRepository extends BaseRepository {
 

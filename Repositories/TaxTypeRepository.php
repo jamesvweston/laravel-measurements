@@ -1,8 +1,10 @@
-<?php namespace postage\Repositories;
+<?php
+namespace app\Repositories;
 
-use postage\Utilities\ArrayUtil;
-use postage\Utilities\StringUtil;
-use postage\Exceptions\ValidationFailureException;
+
+use app\Utilities\ArrayUtil;
+use app\Utilities\StringUtil;
+use app\Exceptions\ValidationFailureException;
 
 class TaxTypeRepository extends BaseRepository {
 
@@ -15,7 +17,7 @@ class TaxTypeRepository extends BaseRepository {
             $qb->select(['taxTypes']);
         }
 
-        $qb->from('postage\Models\TaxType', 'taxTypes');
+        $qb->from('app\Models\TaxType', 'taxTypes');
 
         // Order by
         if (is_null(ArrayUtil::get($params['orderBy'], NULL))) {

@@ -1,6 +1,8 @@
-<?php namespace postage\Models;
+<?php
+namespace app\Models;
 
-use postage\Utilities\ArrayUtil;
+
+use app\Utilities\ArrayUtil;
 use Respect\Validation\Validator as v;
 use Auth;
 

@@ -1,7 +1,9 @@
-<?php namespace postage\Repositories;
+<?php
+namespace app\Repositories;
 
-use postage\Utilities\ArrayUtil;
-use postage\Exceptions\ValidationFailureException;
+
+use app\Utilities\ArrayUtil;
+use app\Exceptions\ValidationFailureException;
 
 class WeightTypeRepository extends BaseRepository {
 
@@ -19,7 +21,7 @@ class WeightTypeRepository extends BaseRepository {
             $qb->select(['weightTypes']);
         }
 
-        $qb->from('postage\Models\WeightType', 'weightTypes');
+        $qb->from('app\Models\WeightType', 'weightTypes');
 
         // Order by
         if (is_null(ArrayUtil::get($params['orderBy'], NULL))) {

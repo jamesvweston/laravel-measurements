@@ -1,17 +1,17 @@
-postage\Models\Currency:
+app\Models\TaxType:
   type:               entity
-  table:              Currency
-  repositoryClass:    postage\Repositories\CurrencyRepository
+  table:              TaxType
+  repositoryClass:    app\Repositories\TaxTypeRepository
 
   id:
     id:
       column:         id
       type:           integer
       nullable:       false
-      id:             true
       options:
         unsigned:     true
-        comment:      'Currency id'
+        comment:      'TaxType id'
+      id:             true
       generator:
         strategy:     IDENTITY
 
@@ -19,19 +19,19 @@ postage\Models\Currency:
     name:
       column:         name
       type:           string
+      unique:         true
       nullable:       false
-      length:         100
+      length:         50
       options:
-        fixed:        false
-        comment:      "Currency unique name"
+        comment:      "Name of the TaxType"
     symbol:
       column:         symbol
       type:           string
+      unique:         true
       nullable:       false
-      length:         3
+      length:         50
       options:
-        fixed:        true
-        comment:      "Currency unique symbol"
+        comment:      "symbol of the TaxType"
 ##  BEGIN BOILER PLATE
     statusId:
       column:         statusId
@@ -39,21 +39,21 @@ postage\Models\Currency:
       nullable:       false
       options:
         unsigned:     true
-        comment:      "Status of the Currency"
+        comment:      "Status of the TaxType"
         default:      1
     createdAt:
       column:         createdAt
       type:           datetime
       nullable:       false
       options:
-        comment:      "When the Currency was created"
+        comment:      "When the TaxType was created"
         default:      CURRENT_datetime
     expiresAt:
       column:         expiresAt
       type:           datetime
       nullable:       false
       options:
-        comment:      "When the Currency expires"
+        comment:      "When the TaxType expires"
         default:      "2038-01-01 01:01:01"
 
   lifecycleCallbacks: {  }

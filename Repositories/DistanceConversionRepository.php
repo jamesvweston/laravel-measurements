@@ -1,6 +1,8 @@
-<?php namespace postage\Repositories;
+<?php
+namespace app\Repositories;
 
-use postage\Models\DistanceType;
+
+use app\Models\DistanceType;
 
 class DistanceConversionRepository extends BaseRepository {
 

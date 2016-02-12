@@ -1,6 +1,6 @@
 <?php
-
 namespace JamesVweston\LaravelGeography;
+
 
 use Illuminate\Support\ServiceProvider;
 

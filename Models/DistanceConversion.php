@@ -1,4 +1,6 @@
-<?php namespace postage\Models;
+<?php
+namespace app\Models;
+
 
 use Respect\Validation\Validator as v;
 
@@ -30,7 +32,7 @@ class DistanceConversion implements \JsonSerializable {
 
     protected function getValidationRules() {
 
-        v::with('postage\\Models\\Validation\\');
+        v::with('app\\Models\\Validation\\');
 
         return [
             v::attribute('name',                        v::notEmpty()->alpha()->length(2, 100)),

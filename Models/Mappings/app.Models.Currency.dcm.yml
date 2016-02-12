@@ -1,23 +1,17 @@
-postage\Models\DistanceType:
+app\Models\Currency:
   type:               entity
-  table:              DistanceType
-  repositoryClass:    postage\Repositories\DistanceTypeRepository
-
-  oneToMany:
-    conversions:
-      targetEntity:   DistanceConversion
-      mappedBy:       distancetype
-      cascade:        ["persist", "remove"]
+  table:              Currency
+  repositoryClass:    app\Repositories\CurrencyRepository
 
   id:
     id:
       column:         id
       type:           integer
       nullable:       false
+      id:             true
       options:
         unsigned:     true
-        comment:      'DistanceType id'
-      id:             true
+        comment:      'Currency id'
       generator:
         strategy:     IDENTITY
 
@@ -28,15 +22,16 @@ postage\Models\DistanceType:
       nullable:       false
       length:         100
       options:
-        comment:      "DistanceType unique name"
+        fixed:        false
+        comment:      "Currency unique name"
     symbol:
       column:         symbol
       type:           string
       nullable:       false
-      length:         2
+      length:         3
       options:
-        fixed:        false
-        comment:      "DistanceType unique symbol"
+        fixed:        true
+        comment:      "Currency unique symbol"
 ##  BEGIN BOILER PLATE
     statusId:
       column:         statusId
@@ -44,21 +39,21 @@ postage\Models\DistanceType:
       nullable:       false
       options:
         unsigned:     true
-        comment:      "Status of the DistanceType"
+        comment:      "Status of the Currency"
         default:      1
     createdAt:
       column:         createdAt
       type:           datetime
       nullable:       false
       options:
-        comment:      "When the DistanceType was created"
+        comment:      "When the Currency was created"
         default:      CURRENT_datetime
     expiresAt:
       column:         expiresAt
       type:           datetime
       nullable:       false
       options:
-        comment:      "When the DistanceType expires"
+        comment:      "When the Currency expires"
         default:      "2038-01-01 01:01:01"
 
   lifecycleCallbacks: {  }
