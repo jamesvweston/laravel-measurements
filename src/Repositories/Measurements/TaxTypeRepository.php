@@ -4,9 +4,9 @@ namespace app\Repositories\Measurements;
 
 use app\Utilities\ArrayUtil;
 use app\Utilities\StringUtil;
-use app\Exceptions\ValidationFailureException;
 
-class TaxTypeRepository extends BaseRepository {
+class TaxTypeRepository extends BaseMeasurementRepository
+{
 
     function where($params) {
         $qb = $this->_em->createQueryBuilder();

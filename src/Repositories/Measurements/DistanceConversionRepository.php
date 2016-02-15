@@ -4,7 +4,8 @@ namespace app\Repositories\Measurements;
 
 use app\Models\DistanceType;
 
-class DistanceConversionRepository extends BaseRepository {
+class DistanceConversionRepository extends BaseMeasurementRepository
+{
 
     public function findOneByDistanceTypes(DistanceType $fromDistanceType, DistanceType $toDistanceType) {
         $criteria = [

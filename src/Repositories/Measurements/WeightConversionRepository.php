@@ -4,7 +4,8 @@ namespace app\Repositories\Measurements;
 
 use app\Models\WeightType;
 
-class WeightConversionRepository extends BaseRepository {
+class WeightConversionRepository extends BaseMeasurementRepository
+{
 
     public function findOneByWeightTypes(WeightType $fromWeightType, WeightType $toWeightType) {
         $criteria = [

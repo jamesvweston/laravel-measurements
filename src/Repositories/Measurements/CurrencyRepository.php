@@ -5,7 +5,8 @@ namespace app\Repositories\Measurements;
 use app\Utilities\ArrayUtil;
 use app\Utilities\StringUtil;
 
-class CurrencyRepository extends BaseMeasurementRepository {
+class CurrencyRepository extends BaseMeasurementRepository
+{
 
     use Paginatable;
 

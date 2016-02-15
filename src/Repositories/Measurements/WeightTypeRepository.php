@@ -3,9 +3,9 @@ namespace app\Repositories\Measurements;
 
 
 use app\Utilities\ArrayUtil;
-use app\Exceptions\ValidationFailureException;
 
-class WeightTypeRepository extends BaseRepository {
+class WeightTypeRepository extends BaseMeasurementRepository
+{
 
     public function findOneBySymbol($symbol) {
         return $this->findOneBy(['symbol' => $symbol]);

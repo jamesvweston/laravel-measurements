@@ -3,11 +3,10 @@ namespace app\Repositories\Measurements;
 
 
 use app\Utilities\ArrayUtil;
-use app\Exceptions\ValidationFailureException;
 use LaravelDoctrine\ORM\Pagination\Paginatable;
-use app\Helpers\InputValidator;
 
-class DistanceTypeRepository extends BaseRepository {
+class DistanceTypeRepository extends BaseMeasurementRepository
+{
 
     use Paginatable;
 
