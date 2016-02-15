@@ -1,11 +1,11 @@
 <?php
-namespace app\Repositories;
+namespace app\Repositories\Measurements;
 
 
 use app\Utilities\ArrayUtil;
 use app\Utilities\StringUtil;
 
-class CurrencyRepository extends BaseRepository {
+class CurrencyRepository extends BaseMeasurementRepository {
 
     use Paginatable;
 

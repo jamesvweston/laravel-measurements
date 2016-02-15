@@ -1,5 +1,5 @@
 <?php
-namespace app\Repositories\Geography;
+namespace app\Repositories\Measurements;
 
 
 use app\Utilities\ArrayUtil;
