@@ -5,7 +5,8 @@ namespace app\Models\Measurements;
 use app\Utilities\ArrayUtil;
 use Respect\Validation\Validator as v;
 
-class TaxType implements \JsonSerializable {
+class TaxType implements \JsonSerializable
+{
 
     public $id;
     public $name;
@@ -22,7 +23,8 @@ class TaxType implements \JsonSerializable {
     //  END oneToMany relationships
 
 
-    public function __construct ($data = null) {
+    public function __construct ($data = null)
+    {
         $this->id                               =       NULL;
         $this->statusId                         =       1;
         $this->createdAt                        =       new \DateTime();
@@ -34,7 +36,8 @@ class TaxType implements \JsonSerializable {
         }
     }
 
-    protected function getValidationRules() {
+    protected function getValidationRules()
+    {
         v::with('app\\Models\\Validation\\');
 
         return [
@@ -49,7 +52,8 @@ class TaxType implements \JsonSerializable {
         ];
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         $taxType                                =       call_user_func('get_object_vars', $this);
         return array_except($taxType, ['__initializer__', '__cloner__', '__isInitialized__']);
     }

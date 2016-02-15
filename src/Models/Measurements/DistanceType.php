@@ -5,7 +5,8 @@ namespace app\Models\Measurements;
 use app\Utilities\ArrayUtil;
 use Respect\Validation\Validator as v;
 
-class DistanceType implements \JsonSerializable {
+class DistanceType implements \JsonSerializable
+{
 
     public $id;
     public $name;
@@ -18,7 +19,8 @@ class DistanceType implements \JsonSerializable {
     protected $conversions;
     //  END oneToMany relationships
 
-    public function __construct ($data = null) {
+    public function __construct ($data = null)
+    {
         $this->id                               =       NULL;
         $this->statusId                         =       1;
         $this->createdAt                        =       new \DateTime();
@@ -32,7 +34,8 @@ class DistanceType implements \JsonSerializable {
         }
     }
 
-    protected function getValidationRules() {
+    protected function getValidationRules()
+    {
 
         return [
             v::attribute('name',                        v::notEmpty()->alpha()->length(2, 100)),
@@ -43,7 +46,8 @@ class DistanceType implements \JsonSerializable {
         ];
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         $distanceType                           =       call_user_func('get_object_vars', $this);
         return array_except($distanceType, ['__initializer__', '__cloner__', '__isInitialized__']);
     }
@@ -54,7 +58,8 @@ class DistanceType implements \JsonSerializable {
      * Get an ArrayCollection of DistanceConversion objects for this DistanceType
      * @return ArrayCollection
      */
-    public function getDistanceConversions() {
+    public function getDistanceConversions()
+    {
         return $this->conversions;
     }
 
@@ -66,7 +71,8 @@ class DistanceType implements \JsonSerializable {
      * Add a DistanceConversion object to the DistanceType
      * @param DistanceConversion $distanceConversion
      */
-    public function addDistanceConversion(DistanceConversion $distanceConversion) {
+    public function addDistanceConversion(DistanceConversion $distanceConversion)
+    {
         $this->conversions->add($distanceConversion);
     }
 

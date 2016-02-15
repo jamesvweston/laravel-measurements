@@ -5,7 +5,8 @@ namespace app\Models\Measurements;
 use app\Utilities\ArrayUtil;
 use Respect\Validation\Validator as v;
 
-class WeightType implements \JsonSerializable {
+class WeightType implements \JsonSerializable
+{
 
     public $id;
     public $name;
@@ -21,7 +22,8 @@ class WeightType implements \JsonSerializable {
     //  BEGIN oneToMany relationships
     //  END oneToMany relationships
 
-    public function __construct ($data = null) {
+    public function __construct ($data = null)
+    {
         $this->id                               =       NULL;
         $this->statusId                         =       1;
         $this->createdAt                        =       new \DateTime();
@@ -39,7 +41,8 @@ class WeightType implements \JsonSerializable {
         // TODO: Implement getValidationRules() method
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         $weightType                             =       call_user_func('get_object_vars', $this);
         return array_except($weightType, ['__initializer__', '__cloner__', '__isInitialized__']);
     }

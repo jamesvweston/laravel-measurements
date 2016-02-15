@@ -5,7 +5,8 @@ namespace app\Models\Measurements;
 use app\Utilities\ArrayUtil;
 use Respect\Validation\Validator as v;
 
-class Currency implements \JsonSerializable {
+class Currency implements \JsonSerializable
+{
 
     public $id;
     public $name;
@@ -15,7 +16,8 @@ class Currency implements \JsonSerializable {
     public $expiresAt;
 
 
-    public function __construct ($data = null) {
+    public function __construct ($data = null)
+    {
         $this->id                               =       NULL;
         $this->statusId                         =       1;
         $this->createdAt                        =       new \DateTime();
@@ -27,7 +29,8 @@ class Currency implements \JsonSerializable {
         }
     }
 
-    protected function getValidationRules() {
+    protected function getValidationRules()
+    {
 
         return [
             v::attribute('name',                        v::notEmpty()->length(3, 100)),
@@ -38,7 +41,8 @@ class Currency implements \JsonSerializable {
         ];
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         $currency                               =       call_user_func('get_object_vars', $this);
         return array_except($currency, ['__initializer__', '__cloner__', '__isInitialized__']);
     }

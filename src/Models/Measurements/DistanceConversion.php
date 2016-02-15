@@ -5,7 +5,8 @@ namespace app\Models\Measurements;
 use app\Utilities\ArrayUtil;
 use Respect\Validation\Validator as v;
 
-class DistanceConversion implements \JsonSerializable {
+class DistanceConversion implements \JsonSerializable
+{
 
     public $id;
     public $multiplicand;
@@ -19,7 +20,8 @@ class DistanceConversion implements \JsonSerializable {
     // END oneToMany relationships
 
 
-    public function __construct ($data = null) {
+    public function __construct ($data = null)
+    {
         $this->id                               =       NULL;
         $this->statusId                         =       1;
         $this->createdAt                        =       new \DateTime();
@@ -31,7 +33,8 @@ class DistanceConversion implements \JsonSerializable {
         }
     }
 
-    protected function getValidationRules() {
+    protected function getValidationRules()
+    {
 
         v::with('app\\Models\\Validation\\');
 
@@ -44,7 +47,8 @@ class DistanceConversion implements \JsonSerializable {
         ];
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         $distanceConversion                     =       call_user_func('get_object_vars', $this);
         return array_except($distanceConversion, ['__initializer__', '__cloner__', '__isInitialized__']);
     }
@@ -54,7 +58,8 @@ class DistanceConversion implements \JsonSerializable {
      * Get the from DistanceType object for the DistanceConversion
      * @return DistanceType
      */
-    public function getFromDistanceType() {
+    public function getFromDistanceType()
+    {
         return $this->fromDistanceType;
     }
 
@@ -62,7 +67,8 @@ class DistanceConversion implements \JsonSerializable {
      * Get the to DistanceType object for the DistanceConversion
      * @return DistanceType
      */
-    public function getToDistanceType() {
+    public function getToDistanceType()
+    {
         return $this->toDistanceType;
     }
 
@@ -74,7 +80,8 @@ class DistanceConversion implements \JsonSerializable {
      * Set the from DistanceType object for the DistanceConversion
      * @param DistanceType $fromDistanceType
      */
-    public function setFromDistanceType(DistanceType $fromDistanceType) {
+    public function setFromDistanceType(DistanceType $fromDistanceType)
+    {
         $this->fromDistanceType = $fromDistanceType;
     }
 
@@ -82,7 +89,8 @@ class DistanceConversion implements \JsonSerializable {
      * Set the to DistanceType object for the DistanceConversion
      * @param DistanceType $toDistanceType
      */
-    public function setToDistanceType(DistanceType $toDistanceType) {
+    public function setToDistanceType(DistanceType $toDistanceType)
+    {
         $this->toDistanceType = $toDistanceType;
     }
     // END Setters

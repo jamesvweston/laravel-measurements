@@ -5,7 +5,8 @@ namespace app\Models\Measurements;
 use app\Utilities\ArrayUtil;
 use Respect\Validation\Validator as v;
 
-class WeightConversion implements \JsonSerializable {
+class WeightConversion implements \JsonSerializable
+{
 
     public $id;
     public $multiplicand;
@@ -23,7 +24,8 @@ class WeightConversion implements \JsonSerializable {
     //  END oneToMany relationships
 
 
-    public function __construct ($data = null) {
+    public function __construct ($data = null)
+    {
         $this->id                               =       NULL;
         $this->statusId                         =       1;
         $this->createdAt                        =       new \DateTime();
@@ -36,7 +38,8 @@ class WeightConversion implements \JsonSerializable {
         }
     }
 
-    protected function getValidationRules() {
+    protected function getValidationRules()
+    {
 
         v::with('app\\Models\\Validation\\');
 
@@ -50,7 +53,8 @@ class WeightConversion implements \JsonSerializable {
         ];
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         $weightConversion                       =       call_user_func('get_object_vars', $this);
         return array_except($weightConversion, ['__initializer__', '__cloner__', '__isInitialized__']);
     }
@@ -61,7 +65,8 @@ class WeightConversion implements \JsonSerializable {
      * Get the from WeightType for the WeightConversion
      * @return WeightType
      */
-    public function getFromWeightType() {
+    public function getFromWeightType()
+    {
         return $this->fromWeightType;
     }
 
@@ -69,7 +74,8 @@ class WeightConversion implements \JsonSerializable {
      * Get the to WeightType for the WeightConversion
      * @return WeightType
      */
-    public function getToWeightType() {
+    public function getToWeightType()
+    {
         return $this->toWeightType;
     }
     // END Getters
@@ -80,7 +86,8 @@ class WeightConversion implements \JsonSerializable {
      * Set the from WeightType for the WeightConversion
      * @param WeightType $fromWeightType
      */
-    public function setFromWeightType(WeightType $fromWeightType) {
+    public function setFromWeightType(WeightType $fromWeightType)
+    {
         $this->fromWeightType = $fromWeightType;
     }
 
@@ -88,7 +95,8 @@ class WeightConversion implements \JsonSerializable {
      * Set the to WeightType for the WeightConversion
      * @param WeightType $toWeightType
      */
-    public function setToWeightType(WeightType $toWeightType) {
+    public function setToWeightType(WeightType $toWeightType)
+    {
         $this->toWeightType = $toWeightType;
     }
     // END Setters
