@@ -1,5 +1,5 @@
 <?php
-namespace app\Models;
+namespace app\Models\Measurements;
 
 
 use Respect\Validation\Validator as v;

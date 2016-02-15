@@ -1,17 +1,17 @@
-app\Models\TaxType:
+app\Models\Measurements\Currency:
   type:               entity
-  table:              TaxType
-  repositoryClass:    app\Repositories\TaxTypeRepository
+  table:              Currency
+  repositoryClass:    app\Repositories\Measurements\CurrencyRepository
 
   id:
     id:
       column:         id
       type:           integer
       nullable:       false
+      id:             true
       options:
         unsigned:     true
-        comment:      'TaxType id'
-      id:             true
+        comment:      'Currency id'
       generator:
         strategy:     IDENTITY
 
@@ -19,19 +19,19 @@ app\Models\TaxType:
     name:
       column:         name
       type:           string
-      unique:         true
       nullable:       false
-      length:         50
+      length:         100
       options:
-        comment:      "Name of the TaxType"
+        fixed:        false
+        comment:      "Currency unique name"
     symbol:
       column:         symbol
       type:           string
-      unique:         true
       nullable:       false
-      length:         50
+      length:         3
       options:
-        comment:      "symbol of the TaxType"
+        fixed:        true
+        comment:      "Currency unique symbol"
 ##  BEGIN BOILER PLATE
     statusId:
       column:         statusId
@@ -39,21 +39,21 @@ app\Models\TaxType:
       nullable:       false
       options:
         unsigned:     true
-        comment:      "Status of the TaxType"
+        comment:      "Status of the Currency"
         default:      1
     createdAt:
       column:         createdAt
       type:           datetime
       nullable:       false
       options:
-        comment:      "When the TaxType was created"
+        comment:      "When the Currency was created"
         default:      CURRENT_datetime
     expiresAt:
       column:         expiresAt
       type:           datetime
       nullable:       false
       options:
-        comment:      "When the TaxType expires"
+        comment:      "When the Currency expires"
         default:      "2038-01-01 01:01:01"
 
   lifecycleCallbacks: {  }

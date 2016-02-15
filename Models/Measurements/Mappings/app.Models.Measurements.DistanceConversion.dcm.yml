@@ -1,22 +1,21 @@
-app\Models\WeightConversion:
+app\Models\Measurements\DistanceConversion:
   type:               entity
-  table:              WeightConversion
-  repositoryClass:    app\Repositories\WeightConversionRepository
+  table:              DistanceConversion
+  repositoryClass:    app\Repositories\Measurements\DistanceConversionRepository
 
   manyToOne:
-    fromWeightType:
-      targetEntity:   WeightType
-      nullable:       false
-      fetch:          EAGER
+    fromDistanceType:
+      targetEntity:   DistanceType
+      fetch:          LAZY
+      inversedBy:     conversions
       joinColumn:
-        name:         fromWeightTypeId
+        name:         fromDistanceTypeId
         referencedColumnName: id
-    toWeightType:
-      targetEntity:   WeightType
-      nullable:       false
-      fetch:          EAGER
+    toDistanceType:
+      targetEntity:   DistanceType
+      fetch:          LAZY
       joinColumn:
-        name:         toWeightTypeId
+        name:         toDistanceTypeId
         referencedColumnName: id
 
   id:
@@ -26,7 +25,7 @@ app\Models\WeightConversion:
       nullable:       false
       options:
         unsigned:     true
-        comment:      'WeightConversion id'
+        comment:      'DistanceConversion id'
       id:             true
       generator:
         strategy:     IDENTITY
@@ -40,7 +39,7 @@ app\Models\WeightConversion:
       scale:          8
       options:
         fixed:        false
-        comment:      "multiplicand of the WeightConversion"
+        comment:      "multiplicand of the DistanceConversion"
 ##  BEGIN BOILER PLATE
     statusId:
       column:         statusId
@@ -48,21 +47,21 @@ app\Models\WeightConversion:
       nullable:       false
       options:
         unsigned:     true
-        comment:      "Status of the WeightConversion"
+        comment:      "Status of the DistanceConversion"
         default:      1
     createdAt:
       column:         createdAt
       type:           datetime
       nullable:       false
       options:
-        comment:      "When the WeightConversion was created"
+        comment:      "When the DistanceConversion was created"
         default:      CURRENT_datetime
     expiresAt:
       column:         expiresAt
       type:           datetime
       nullable:       false
       options:
-        comment:      "When the WeightConversion expires"
+        comment:      "When the DistanceConversion expires"
         default:      "2038-01-01 01:01:01"
 
   lifecycleCallbacks: {  }

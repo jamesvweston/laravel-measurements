@@ -1,7 +1,7 @@
-app\Models\WeightType:
+app\Models\Measurements\WeightType:
   type:               entity
   table:              WeightType
-  repositoryClass:    app\Repositories\WeightTypeRepository
+  repositoryClass:    app\Repositories\Measurements\WeightTypeRepository
 
   id:
     id:

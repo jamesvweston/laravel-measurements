@@ -1,7 +1,7 @@
-app\Models\DistanceType:
+app\Models\Measurements\DistanceType:
   type:               entity
   table:              DistanceType
-  repositoryClass:    app\Repositories\DistanceTypeRepository
+  repositoryClass:    app\Repositories\Measurements\DistanceTypeRepository
 
   oneToMany:
     conversions:
