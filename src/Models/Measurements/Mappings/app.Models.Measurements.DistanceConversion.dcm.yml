@@ -5,14 +5,14 @@ app\Models\Measurements\DistanceConversion:
 
   manyToOne:
     fromDistanceType:
-      targetEntity:   DistanceType
+      targetEntity:   app\Models\Measurements\DistanceType
       fetch:          LAZY
       inversedBy:     conversions
       joinColumn:
         name:         fromDistanceTypeId
         referencedColumnName: id
     toDistanceType:
-      targetEntity:   DistanceType
+      targetEntity:   app\Models\Measurements\DistanceType
       fetch:          LAZY
       joinColumn:
         name:         toDistanceTypeId

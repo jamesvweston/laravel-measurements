@@ -5,14 +5,14 @@ app\Models\Measurements\WeightConversion:
 
   manyToOne:
     fromWeightType:
-      targetEntity:   WeightType
+      targetEntity:   app\Models\Measurements\WeightType
       nullable:       false
       fetch:          EAGER
       joinColumn:
         name:         fromWeightTypeId
         referencedColumnName: id
     toWeightType:
-      targetEntity:   WeightType
+      targetEntity:   app\Models\Measurements\WeightType
       nullable:       false
       fetch:          EAGER
       joinColumn:
