@@ -28,7 +28,7 @@ class DistanceConversionRepository extends BaseMeasurementRepository
         $qb                         =   $this->_em->createQueryBuilder();
         $qb->select(['distanceConversion']);
 
-        $qb->from('postage\Models\DistanceConversion', 'distanceConversion')
+        $qb->from('app\Models\DistanceConversion', 'distanceConversion')
             ->innerJoin('distanceConversion.fromDistanceType', 'fromDistanceType', Query\Expr\Join::ON)
             ->innerJoin('distanceConversion.toDistanceType', 'toDistanceType', Query\Expr\Join::ON);
 

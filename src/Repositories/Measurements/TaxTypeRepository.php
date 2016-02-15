@@ -2,7 +2,6 @@
 namespace app\Repositories\Measurements;
 
 use app\Models\Measurements\TaxType;
-use app\Utilities\ArrayUtil;
 use LaravelDoctrine\ORM\Pagination\Paginatable;
 use Doctrine\ORM\Query;
 
@@ -10,6 +9,29 @@ class TaxTypeRepository extends BaseMeasurementRepository
 {
 
     use Paginatable;
+
+    /**
+     * Query against all fields
+     * @param       []                      $query              Values to query against
+     * @param       bool                    $ignorePagination   If true will not return pagination
+     * @param       int|null                $maxLimit           If provided limit is greater than this value, set is to this value
+     * @param       int|null                $maxPage            If the provided page is greater than this value, restrict it to this value
+     * @return      array|\Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function where($query, $ignorePagination = true, $maxLimit = 5000, $maxPage = 100)
+    {
+        $pagination                 =   $this->buildPagination($query, $maxLimit, $maxPage);
+        $qb                         =   $this->_em->createQueryBuilder();
+
+        $qb->select(['taxTypes']);
+        $qb->from('app\Models\TaxType', 'taxTypes');
+        $qb->orderBy('taxTypes.id', 'ASC');
+
+        if ($ignorePagination)
+            return $qb->getQuery()->getResult();
+        else
+            return $this->paginate($qb->getQuery(), $pagination['limit']);
+    }
 
 
     /**
