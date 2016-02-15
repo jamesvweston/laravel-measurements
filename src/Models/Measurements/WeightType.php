@@ -4,7 +4,6 @@ namespace app\Models\Measurements;
 
 use app\Utilities\ArrayUtil;
 use Respect\Validation\Validator as v;
-use Auth;
 
 class WeightType extends BaseModel implements \JsonSerializable {
 

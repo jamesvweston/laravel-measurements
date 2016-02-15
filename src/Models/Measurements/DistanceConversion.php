@@ -2,6 +2,7 @@
 namespace app\Models\Measurements;
 
 
+use app\Utilities\ArrayUtil;
 use Respect\Validation\Validator as v;
 
 class DistanceConversion implements \JsonSerializable {
