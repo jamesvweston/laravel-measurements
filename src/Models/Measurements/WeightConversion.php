@@ -5,7 +5,7 @@ namespace app\Models\Measurements;
 use app\Utilities\ArrayUtil;
 use Respect\Validation\Validator as v;
 
-class WeightConversion extends BaseModel implements \JsonSerializable {
+class WeightConversion implements \JsonSerializable {
 
     public $id;
     public $multiplicand;

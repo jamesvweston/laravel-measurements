@@ -5,7 +5,7 @@ namespace app\Models\Measurements;
 use app\Utilities\ArrayUtil;
 use Respect\Validation\Validator as v;
 
-class TaxType extends BaseModel implements \JsonSerializable {
+class TaxType implements \JsonSerializable {
 
     public $id;
     public $name;
