@@ -24,8 +24,8 @@ class TaxTypeRepository extends BaseMeasurementRepository
         $qb                         =   $this->_em->createQueryBuilder();
 
         $qb->select(['taxTypes']);
-        $qb->from('app\Models\TaxType', 'taxTypes');
-        $qb->orderBy('taxTypes.id', 'ASC');
+        $qb->from('app\Models\TaxType', 'taxType');
+        $qb->orderBy('taxType.id', 'ASC');
 
         if ($ignorePagination)
             return $qb->getQuery()->getResult();
