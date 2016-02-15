@@ -4,10 +4,13 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTaxTypeTable extends Migration {
+class CreateTaxTypeTable extends Migration
+{
 
-    public function up () {
-        Schema::create('TaxType', function (Blueprint $table) {
+    public function up ()
+    {
+        Schema::create('TaxType', function (Blueprint $table)
+        {
             $table->increments('id')->unsigned();
             $table->string('name', 50)->unique();
             $table->string('symbol', 50)->unique();
@@ -20,7 +23,8 @@ class CreateTaxTypeTable extends Migration {
         });
     }
 
-    public function down () {
+    public function down ()
+    {
         Schema::drop('TaxType');
     }
 

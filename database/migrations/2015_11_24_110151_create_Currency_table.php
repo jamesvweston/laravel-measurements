@@ -4,10 +4,13 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContinentTable extends Migration {
+class CreateContinentTable extends Migration
+{
 
-    public function up () {
-        Schema::create('Currency', function (Blueprint $table) {
+    public function up ()
+    {
+        Schema::create('Currency', function (Blueprint $table)
+        {
             $table->increments('id')->unsigned();
             $table->string('name', 100)->unique();
             $table->string('symbol', 3)->unique();
@@ -21,7 +24,8 @@ class CreateContinentTable extends Migration {
         DB::statement("ALTER TABLE Currency COMMENT = 'Based on ISO 4217   http://www.iso.org/iso/home/standards/currency_codes.htm'");
     }
 
-    public function down () {
+    public function down ()
+    {
         Schema::drop('Currency');
     }
 }

@@ -4,10 +4,13 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDistanceTypeTable extends Migration {
+class CreateDistanceTypeTable extends Migration
+{
 
-    public function up () {
-        Schema::create('DistanceType', function (Blueprint $table) {
+    public function up ()
+    {
+        Schema::create('DistanceType', function (Blueprint $table)
+        {
             $table->increments('id')->unsigned();
             $table->string('name', 100)->unique();
             $table->string('symbol', 2)->unique();
@@ -21,7 +24,8 @@ class CreateDistanceTypeTable extends Migration {
 
     }
 
-    public function down () {
+    public function down ()
+    {
         Schema::drop('DistanceType');
     }
 

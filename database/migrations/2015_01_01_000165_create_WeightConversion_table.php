@@ -4,10 +4,13 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWeightConversionTable extends Migration {
+class CreateWeightConversionTable extends Migration
+{
 
-    public function up () {
-        Schema::create('WeightConversion', function (Blueprint $table) {
+    public function up ()
+    {
+        Schema::create('WeightConversion', function (Blueprint $table)
+        {
             $table->increments('id')->unsigned();
             $table->integer('fromWeightTypeId')->unsigned()->index();
             $table->integer('toWeightTypeId')->unsigned()->index();
@@ -23,14 +26,16 @@ class CreateWeightConversionTable extends Migration {
         DB::statement("ALTER TABLE WeightConversion ADD CONSTRAINT unique_fromWeightTypeId_toWeightTypeId
                           UNIQUE (fromWeightTypeId, toWeightTypeId)");
 
-        Schema::table('WeightConversion', function (Blueprint $table) {
+        Schema::table('WeightConversion', function (Blueprint $table)
+        {
             $table->foreign('fromWeightTypeId')->references('id')->on('WeightType');
             $table->foreign('toWeightTypeId')->references('id')->on('WeightType');
         });
 
     }
 
-    public function down () {
+    public function down ()
+    {
         Schema::drop('WeightConversion');
     }
 
