@@ -2,28 +2,13 @@
 namespace app\Repositories\Measurements;
 
 
-use app\Models\DistanceType;
+use app\Utilities\ArrayUtil;
+use LaravelDoctrine\ORM\Pagination\Paginatable;
+use Doctrine\ORM\Query;
 
 class DistanceConversionRepository extends BaseMeasurementRepository
 {
 
-    public function findOneByDistanceTypes(DistanceType $fromDistanceType, DistanceType $toDistanceType) {
-        $criteria = [
-            'fromDistanceType'        =>          $fromDistanceType,
-            'toDistanceType'          =>          $toDistanceType
-        ];
-        return $this->findOneBy($criteria);
-    }
-
-    public function convertObjects(DistanceType $fromDistanceType, DistanceType $toDistanceType, $distance) {
-        $criteria = [
-            'fromDistanceType'        =>          $fromDistanceType,
-            'toDistanceType'          =>          $toDistanceType
-        ];
-
-        $result                 =   $this->findOneBy($criteria);
-
-        return $result->multiplicand * $distance;
-    }
+    use Paginatable;
 
 }

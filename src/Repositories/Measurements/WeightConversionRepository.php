@@ -2,28 +2,14 @@
 namespace app\Repositories\Measurements;
 
 
-use app\Models\WeightType;
+use app\Utilities\ArrayUtil;
+use LaravelDoctrine\ORM\Pagination\Paginatable;
+use Doctrine\ORM\Query;
 
 class WeightConversionRepository extends BaseMeasurementRepository
 {
 
-    public function findOneByWeightTypes(WeightType $fromWeightType, WeightType $toWeightType) {
-        $criteria = [
-            'fromWeightType'        =>          $fromWeightType,
-            'toWeightType'          =>          $toWeightType
-        ];
-        return $this->findOneBy($criteria);
-    }
+    use Paginatable;
 
 
-    public function convertObjects(WeightType $fromWeightType, WeightType $toWeightType, $weight) {
-        $criteria = [
-            'fromWeightType'        =>          $fromWeightType,
-            'toWeightType'          =>          $toWeightType
-        ];
-
-        $result                 =   $this->findOneBy($criteria);
-
-        return $result->multiplicand * $weight;
-    }
 }
